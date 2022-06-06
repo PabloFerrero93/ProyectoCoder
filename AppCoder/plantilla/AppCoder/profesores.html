@@ -1,0 +1,13 @@
+{% extends 'AppCoder/padre.html' %}
+{% load static %}
+{% block section_name %}
+<h3>Profesores</h3>
+{% endblock %}
+{% block contenidomodificable %}
+<h3>Listado de profesores</h3>
+
+{% for i in profesores %}
+<li>{{i}}</li>
+{% endfor %}
+
+{% endblock %}
