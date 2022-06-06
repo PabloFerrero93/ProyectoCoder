@@ -45,7 +45,6 @@ def cursoFormulario(request):
     return render (request, 'AppCoder/cursoFormulario.html', {"miformulario":miformulario})
 
 
-
 def busquedacamada(request):
     return render(request, 'appCoder/busquedaCamada.html')
 
@@ -81,3 +80,12 @@ def profesorFormulario(request):
     else:
         miformulario = ProfesorFormulario()
     return render(request, "AppCoder/profesorFormulario.html", {"miformulario":miformulario})
+
+#CRUD Delete
+def eliminarProfesor(request, nombre):
+    profesor = Profesor.objects.get(nombre=nombre)
+    profesor.delete()
+
+    profesores = Profesor.objects.all()
+    contexto = {'profesores':profesores}
+    return render(request, 'AppCoder/profesores.html', contexto)

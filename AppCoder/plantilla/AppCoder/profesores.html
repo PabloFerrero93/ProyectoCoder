@@ -8,6 +8,9 @@
 
 {% for i in profesores %}
 <li>{{i}}</li>
+<button>
+    <a href="{% url 'eliminarProfesor' i.nombre %}">Eliminar</a>
+</button>
 {% endfor %}
 
 {% endblock %}
