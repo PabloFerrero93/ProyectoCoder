@@ -89,3 +89,20 @@ def eliminarProfesor(request, nombre):
     profesores = Profesor.objects.all()
     contexto = {'profesores':profesores}
     return render(request, 'AppCoder/profesores.html', contexto)
+
+#CRUD Update
+def editarProfesor(request, nombre):
+    profesor = Profesor.objects.get(nombre=nombre)
+    if request.method == "POST":
+        miformulario = ProfesorFormulario(request.POST)
+        if miformulario.is_valid():
+            informacion = miformulario.cleaned_data
+            profesor.nombre = informacion['nombre']
+            profesor.apellido = informacion['apellido']
+            profesor.email = informacion['email']
+            profesor.profesion = informacion['profesion']
+            profesor.save()
+
+            profesores = Profesor.objects.all()
+            contexto = {'profesores':profesores}
+            return render(request, 'AppCoder/profesores.html', contexto)
