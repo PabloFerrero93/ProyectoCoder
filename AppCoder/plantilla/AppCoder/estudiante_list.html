@@ -10,21 +10,16 @@
 
 <li>{{i}}</li>
 <button>
-    <a href="% url 'estudiante_detalle' estudiante.id %">Detalle</a>
+    <a href="{% url 'estudiante_detalle' i.id %}">Detalle</a>
 </button>
 
 <button>
-    <a href="% url 'estudiante_editar' estudiante.id %">Editar</a>
+    <a href="{% url 'estudiante_editar' i.id %}">Editar</a>
 </button>
 
 <button>
-    <a href="% url 'estudiante_borar' estudiante.id %">Eliminar</a>
+    <a href="{% url 'estudiante_borrar' i.id %}">Eliminar</a>
 </button>
 {% endfor %}
-
-<br>
-<button>
-    <a href="% url 'estudiante_crear' estudiante.id %">Crear</a>
-</button>
 
 {% endblock %}
