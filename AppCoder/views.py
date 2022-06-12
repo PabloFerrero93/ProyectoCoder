@@ -106,3 +106,8 @@ def editarProfesor(request, nombre):
             profesores = Profesor.objects.all()
             contexto = {'profesores':profesores}
             return render(request, 'AppCoder/profesores.html', contexto)
+    else:
+        miformulario = ProfesorFormulario(initial={'nombre':profesor.nombre, 'apellido':profesor.apellido, 'email':profesor.email, 'profesion':profesor.profesion})
+        contexto = {'miformulario':miformulario, 'profesores':profesores}
+        return render(request, 'AppCoder/profesores.html', contexto)
+    return render(request, "AppCoder/profesorFormulario.html", {"miformulario":miformulario})
