@@ -3,11 +3,14 @@
 {% block section_name %}
 <h3>Estudiantes</h3>
 {% endblock %}
+
 {% block contenidomodificable %}
 <h3>Listado de Estudiantes</h3>
 
-{% for i in object_list %}
-<li>{{i}}</li>
-{% endfor %}
+<form method="POST"> {% csrf_token %}
+    Edita al estudiante
+    {{form.as_p}}
+    <input type="submit" value="Enviar">
+
 
 {% endblock %}

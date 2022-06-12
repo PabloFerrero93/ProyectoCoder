@@ -6,8 +6,9 @@
 {% block contenidomodificable %}
 <h3>Listado de Estudiantes</h3>
 
-{% for i in object_list %}
-<li>{{i}}</li>
-{% endfor %}
+<form method="POST"> {% csrf_token %}
+    Esta seguro de eliminar al estudiante "{{object}}"
+    <input type="submit" value="SI">
+
 
 {% endblock %}

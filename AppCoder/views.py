@@ -1,8 +1,11 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from AppCoder.models import  Curso, Profesor
+from django.urls import reverse_lazy
+from AppCoder.models import  Curso, Profesor, Estudiante
 from django.template import loader
 from AppCoder.forms import *
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 
 # Create your views here.
 
@@ -111,3 +114,31 @@ def editarProfesor(request, nombre):
         contexto = {'miformulario':miformulario, 'nombre':nombre}
         return render(request, 'AppCoder/editarProfesores.html', contexto)
 
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#LISTVIEWS
+class EstudiantesList(ListView):
+     model = Estudiante
+     template_name = 'AppCoder/estudiantes.html'
+
+#DETAILVIEWS
+class EstudianteDetalle(DetailView):
+    model = Estudiante
+    template_name = 'AppCoder/estudianteDetalle.html'
+
+#CREATEVIEWS
+class EstudianteCreacion(CreateView):
+    model = Estudiante
+    success_url = reverse_lazy('estudiante_list')
+    fields = ['nombre', 'apellido', 'email']
+
+#UPDATEVIEWS
+class EstudianteEdicion(UpdateView):
+    model = Estudiante
+    success_url = reverse_lazy('estudiante_list')
+    fields = ['nombre', 'apellido', 'email']
+
+#DELETEVIEWS
+class EstudianteEliminacion(DeleteView):
+    model = Estudiante
+    success_url = reverse_lazy('estudiante_list')

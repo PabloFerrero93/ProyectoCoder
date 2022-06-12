@@ -1,0 +1,30 @@
+{% extends 'AppCoder/padre.html' %}
+{% load static %}
+{% block section_name %}
+<h3>Estudiantes</h3>
+{% endblock %}
+{% block contenidomodificable %}
+<h3>Listado de Estudiantes</h3>
+
+{% for i in object_list %}
+
+<li>{{i}}</li>
+<button>
+    <a href="% url 'estudiante_detalle' estudiante.id %">Detalle</a>
+</button>
+
+<button>
+    <a href="% url 'estudiante_editar' estudiante.id %">Editar</a>
+</button>
+
+<button>
+    <a href="% url 'estudiante_borar' estudiante.id %">Eliminar</a>
+</button>
+{% endfor %}
+
+<br>
+<button>
+    <a href="% url 'estudiante_crear' estudiante.id %">Crear</a>
+</button>
+
+{% endblock %}
